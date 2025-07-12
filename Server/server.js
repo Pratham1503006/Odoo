@@ -1,12 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-// import { client } from './DataBase_Client/client.js'; // Commented out for now - PostgreSQL not running
+
+// Import database connection to initialize it
+import supabase from './SupabaseClient/client.js';
 
 // Import route modules
 import authRoutes from './routes/auth.route.js';
-import userRoutes from './routes/user.route.js';
-import skillRoutes from './routes/skill.route.js';
+import userRoutes from './routes/userRoutes.js';
+import skillRoutes from './routes/skillRoutes.js';
 import swapRoutes from './routes/swap.route.js';
 import adminRoutes from './routes/admin.route.js';
 
@@ -17,8 +19,12 @@ app.use(cors());
 app.use(express.json());
 
 // Test route
-app.get('/test', (req, res) => {
-    res.json({ message: 'Skill Swap Platform Server is working!' });
+app.get('/api/test', (req, res) => {
+    res.json({
+        success: true,
+        message: 'Skill Swap Platform Server is working!',
+        timestamp: new Date().toISOString()
+    });
 });
 
 // API Routes
