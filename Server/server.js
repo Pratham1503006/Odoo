@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { client } from './DataBase_Client/client.js';
+// import { client } from './DataBase_Client/client.js'; // Commented out for now - PostgreSQL not running
 
-// Import route modules (you need to create these)
+// Import route modules
 import authRoutes from './routes/auth.route.js';
 import userRoutes from './routes/user.route.js';
 import skillRoutes from './routes/skill.route.js';
